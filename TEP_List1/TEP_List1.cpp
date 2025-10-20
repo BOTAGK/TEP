@@ -24,7 +24,11 @@ bool b_alloc_table_fill_34(int iSize, int fillValue) {
     }
 
     int* piTable;
-    piTable = new int[iSize];
+    piTable = new (std::nothrow) int[iSize];
+
+    if (piTable == 0) {
+        return false;
+    }
 
     for (int i = 0; i < iSize; i++) {
         piTable[i] = fillValue;
@@ -39,26 +43,26 @@ bool b_alloc_table_fill_34(int iSize, int fillValue) {
 }
 
 bool b_alloc_table_2_dim(int*** piTable, int iSizeX, int iSizeY) {
-    if (piTable == nullptr || iSizeX < 1 || iSizeY < 1) {
+    if (piTable == 0 || iSizeX < 1 || iSizeY < 1) {
         return false;
     }
    
     *piTable = new (std::nothrow) int* [iSizeX];
     //brak wolnego miejsca w pamieci
-    if (*piTable == nullptr) {
+    if (*piTable == 0) {
         return false;
     }
 
     for (int i = 0; i < iSizeX; i++) {
         (*piTable)[i] = new (std::nothrow) int[iSizeY];
 
-        if (*piTable[i] == nullptr) {
+        if (*piTable[i] == 0) {
             for (int j = 0; j < i; j++) {
                 delete[] (*piTable)[j];
             }
             delete[] *piTable;
             //aby wskaznik nie wisial
-            *piTable = nullptr;
+            *piTable = 0;
 
             return false;
         }
@@ -67,7 +71,7 @@ bool b_alloc_table_2_dim(int*** piTable, int iSizeX, int iSizeY) {
 }
 
 bool b_dealloc_table_2_dim(int*** piTable, int iSizeX, int iSizeY) {
-    if (piTable == nullptr || *piTable == nullptr) {
+    if (piTable == 0 || *piTable == 0) {
         return false;
     }
     
@@ -75,7 +79,7 @@ bool b_dealloc_table_2_dim(int*** piTable, int iSizeX, int iSizeY) {
         delete[](*piTable)[i];
     }
     delete[] *piTable;
-    *piTable = nullptr;
+    *piTable = 0;
 
     return true;
 }

@@ -5,7 +5,6 @@ using std::string;
 using std::cout;
 using std::endl;
 
-//Gdzie umiescic te stale????
 const string CTable::default_name = "CTabel";
 
 CTable::CTable() {
@@ -44,15 +43,15 @@ CTable::~CTable() {
 void CTable::vSetName(string sName) {
 	s_name = sName;
 }
-bool CTable::bSetNewSize(int iTableLen) {
-	if (iTableLen < 1 ) {
+bool CTable::bSetNewSize(int newITableLen) {
+	if (newITableLen < 1 ) {
 		return false;
 	}
-	//Czy try catchowac brak miejsca w pamieci czy robic to w konstrukorach?
+	
 	int* pi_table_copy;
-	pi_table_copy = new int[iTableLen];
+	pi_table_copy = new int[newITableLen];
 
-	int elem_to_copy = (i_table_len < iTableLen) ? i_table_len : iTableLen;
+	int elem_to_copy = (i_table_len < newITableLen) ? i_table_len : newITableLen;
 	
 	for (int i = 0; i < elem_to_copy; i++) {
 		pi_table_copy[i] = pi_table[i];
@@ -61,7 +60,7 @@ bool CTable::bSetNewSize(int iTableLen) {
 	delete[] pi_table;
 
 	pi_table = pi_table_copy;
-	i_table_len = iTableLen;
+	i_table_len = newITableLen;
 	return true;
 }
 CTable* CTable::pcClone() {

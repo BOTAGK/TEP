@@ -18,5 +18,13 @@
     <ClCompile Include="TEP_List2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CNumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
