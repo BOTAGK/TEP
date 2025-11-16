@@ -15,7 +15,12 @@ public:
 	CTable(const CTable& pcOther);
 	~CTable();
 	void vSetName(string sName);
+	void doubleClone(CTable& pcClone0, CTable& pcClone1);
+	void print();
+	void addTable(int* newTable, int iSize);
 	bool bSetNewSize(int iTableLen);
+	string sGetName();
+	int iGetLength();
 	CTable* pcClone();
 private:
 	string s_name;

@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
+    <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b1b792d9-6264-4121-8b21-f97c96ad5f0c}</ProjectGuid>
-    <RootNamespace>TEPList3</RootNamespace>
+    <ProjectGuid>{e4b80e64-8c3c-4a35-b329-b70f682812f9}</ProjectGuid>
+    <RootNamespace>TEP4szablony</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -93,6 +93,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -119,27 +121,16 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CError.cpp" />
-    <ClCompile Include="CInterface.cpp" />
-    <ClCompile Include="CNode.cpp" />
-    <ClCompile Include="CNodeAbs.cpp" />
-    <ClCompile Include="CNodeOp.cpp" />
-    <ClCompile Include="CNodeVar.cpp" />
-    <ClCompile Include="CTree.cpp" />
-    <ClCompile Include="TEP_List3.cpp" />
+    <ClCompile Include="TEP4 - szablony.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CError.h" />
-    <ClInclude Include="CInterface.h" />
-    <ClInclude Include="CNode.h" />
-    <ClInclude Include="CNodeAbs.h" />
-    <ClInclude Include="CNodeOp.h" />
-    <ClInclude Include="CNodeVar.h" />
-    <ClInclude Include="CTree.h" />
+    <ClInclude Include="Tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

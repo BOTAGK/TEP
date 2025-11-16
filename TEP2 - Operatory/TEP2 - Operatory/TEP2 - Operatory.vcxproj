@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b1b792d9-6264-4121-8b21-f97c96ad5f0c}</ProjectGuid>
-    <RootNamespace>TEPList3</RootNamespace>
+    <ProjectGuid>{900a350f-f8c8-49f9-afcd-290abeaa3cb1}</ProjectGuid>
+    <RootNamespace>TEP2Operatory</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -93,6 +93,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -119,27 +121,17 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CError.cpp" />
-    <ClCompile Include="CInterface.cpp" />
-    <ClCompile Include="CNode.cpp" />
-    <ClCompile Include="CNodeAbs.cpp" />
-    <ClCompile Include="CNodeOp.cpp" />
-    <ClCompile Include="CNodeVar.cpp" />
-    <ClCompile Include="CTree.cpp" />
-    <ClCompile Include="TEP_List3.cpp" />
+    <ClCompile Include="CNumber.cpp" />
+    <ClCompile Include="TEP2 - Operatory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CError.h" />
-    <ClInclude Include="CInterface.h" />
-    <ClInclude Include="CNode.h" />
-    <ClInclude Include="CNodeAbs.h" />
-    <ClInclude Include="CNodeOp.h" />
-    <ClInclude Include="CNodeVar.h" />
-    <ClInclude Include="CTree.h" />
+    <ClInclude Include="CNumber.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

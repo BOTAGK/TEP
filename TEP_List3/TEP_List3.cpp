@@ -2,19 +2,27 @@
 //
 
 #include <iostream>
+#include "CInterface.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    CInterface inter;
+
+    inter.run();
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+//wektor na poziomie CNode (CNode -> (CNodeOP, CNodeVar, CNodeAbsolute) 
+//CNodeOP-> CNode+ itd
+//CNode pola: vector<CNode* > children, sTOStr, parent(np do sprawdzenia glebokosci)
+// w CNodeVar mamy miec Ctree* pc_tree pyta drzewa czy drzewo posieda vektor <CVariable*> cvats 
+//wiec CNodeVar musi jescze miec CNodeVar* pcVar aby tworzyc pozostale nody na podstawie pierwszego
+//nody beda sie wczytywac ze stringa a nie parser pcTree -> eLoad(string) zwraca klase gdzie jest blad
+//static CNode* pcCreateNode(cstring token, errorr *pcERror) albo vektor i klonowanie w zaleznosci od nazwy
+//albo seria ifow
+//wlasne cError 
+//eLoad(vector 
+//pc.Root = pcCreateNode(pvTor ->
+//pc.root = eload(pvTokens,1) -> pc.child; for(i =0; i < ) pc.child = pcCreateNode(pvTokens,off)
+// //pcChild.push, pcChild -> eLoad
+//CError eLoad(pvTokens, int, offStart, int* piOffEnd)
+//podzielic pliki 

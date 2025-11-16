@@ -15,6 +15,8 @@ CTable::CTable() {
 
 	pi_table = new int[i_table_len];
 }
+
+
 CTable::CTable(string sName, int iTableLen) {
 	s_name = sName;
 	i_table_len = iTableLen;
@@ -23,6 +25,7 @@ CTable::CTable(string sName, int iTableLen) {
 
 	pi_table = new int[i_table_len];
 }
+
 CTable::CTable(const CTable& pcOther) {
 	s_name = pcOther.s_name + "_copy";
 	i_table_len = pcOther.i_table_len;
@@ -35,19 +38,46 @@ CTable::CTable(const CTable& pcOther) {
 
 	cout << "kopiuj: '" << s_name << "'\n" << endl;
 }
+
 CTable::~CTable() {
 	cout << "usuwam: '" << s_name << "'\n" << endl;
 
 	delete[] pi_table;
 }
+
 void CTable::vSetName(string sName) {
 	s_name = sName;
 }
+
+void CTable::doubleClone(CTable& pcClone0, CTable& pcClone1) {
+	pcClone0 = *(new CTable(*this));
+	pcClone1 = *(new CTable(*this));
+}
+void CTable::addTable(int* newTable, int iSize) {
+	int elem_to_add = (i_table_len < iSize) ? i_table_len : iSize;
+
+	for (int i = 0; i < elem_to_add; i++) {
+		pi_table[i] = newTable[i];
+	}
+}
+
+void CTable::print() {
+	for (int i = 0; i < i_table_len; i++) {
+		cout << pi_table[i] << " " << endl;
+	}
+	cout << "'\n" << endl;
+}
+string CTable::sGetName() {
+	return s_name;
+}
+int CTable::iGetLength() {
+	return i_table_len;
+}
+
 bool CTable::bSetNewSize(int newITableLen) {
 	if (newITableLen < 1 ) {
 		return false;
 	}
-	
 	int* pi_table_copy;
 	pi_table_copy = new int[newITableLen];
 
@@ -63,7 +93,9 @@ bool CTable::bSetNewSize(int newITableLen) {
 	i_table_len = newITableLen;
 	return true;
 }
+
 CTable* CTable::pcClone() {
 	return new CTable(*this);
 }
+
 
