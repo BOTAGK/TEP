@@ -10,6 +10,7 @@ public:
     static CNodeVar* create(const string& token, CTree* tree);
     double evaluate() const override;
     string nodeToStr() const override;
+    CNode* clone(CTree* newOwner) const override;
 
 private:
     CNodeVar(CTree* tree);

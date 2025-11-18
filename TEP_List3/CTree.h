@@ -20,7 +20,10 @@ public:
 	CError eLoad(const vector<string>& tokens);
 	int size();
 	CError join(const vector<string>& tokens);
-	CNode* findLeaf(CNode* node);
+	CNode* findLeaf(CNode* node) ;
+
+	CTree operator+(const CTree& pcNewVal) const;
+	void operator=(const CTree& pcNewVal);
 
 	string treeToString() const;
 	string printVariables();

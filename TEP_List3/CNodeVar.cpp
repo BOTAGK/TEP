@@ -42,3 +42,9 @@ void CNodeVar::setValue(const string& val) {
 		value = 0.0;
 	}
 }
+
+CNode* CNodeVar::clone(CTree* newOwner) const {
+	string varName = pc_Tree->findVariableName(this);
+
+	return CNodeVar::create(varName, newOwner);
+}

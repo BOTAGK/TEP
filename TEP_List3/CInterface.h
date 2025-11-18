@@ -8,7 +8,6 @@ class CInterface
 {
 public:
 	
-
 	CInterface();
 	~CInterface();
 
@@ -20,21 +19,15 @@ public:
 	void vars();
 	void print();
 
-	
-
 	void enter(const vector<string> tokens);
 	void comp(const vector<string> tokens);
 	void join(const vector<string> tokens);
 
-	
-	
-	
-
 private:
 
-	bool undesiredToken(const char& token);
+	bool undesiredToken(const char& token) const;
 
-	void fixInput(string& input);
+	void fixInput(string& input) const;
 
 	typedef void (CInterface::* MethodPtrNoArg)();
 	typedef void (CInterface::* MethodPtrWithArg)(const vector<string> tokens);

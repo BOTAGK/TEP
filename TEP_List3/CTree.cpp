@@ -92,6 +92,7 @@ CError CTree::join(const vector<string>& tokens) {
 	CNode* newNode = CNode::createNode(this, tokens, index, error);
 	
 	if (error.lackArguments()) {
+
 		newNode->fixNodes();
 	}
 	else if (!error.isSuccess()) {
@@ -103,7 +104,7 @@ CError CTree::join(const vector<string>& tokens) {
 	CNode* leaf = findLeaf(root);
 	if (leaf == NULL) {
 		delete newNode;
-		return CError(-1, false, "Could not find a leaff in existing ");
+		return CError(-1, false, "Could not find a leaf in existing tree");
 	}
 
 	//zamien lisc na noda
@@ -174,4 +175,38 @@ string CTree::printVariables() {
 
 string CTree::treeToString() const {
 	return root->nodeToStr();
+}
+
+void CTree::operator=(const CTree& other) {
+	if (this == &other) {
+		return;
+	}
+
+	delete root;
+	root = NULL;
+	variable.clear();
+
+	if (other.root != NULL) {
+		root = other.root->clone(this);
+	}
+}
+
+CTree CTree::operator+(const CTree& other) const {
+	CTree result = *this;
+
+	if (other.root == NULL) {
+		return result;
+	}
+
+	string otherTree = other.treeToString();
+	vector<string> tokens;
+	stringstream ss(otherTree);
+	string token;
+	while (ss >> token) {
+		tokens.push_back(token);
+	}
+
+	result.join(tokens);
+
+	return result;
 }

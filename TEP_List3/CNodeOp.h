@@ -7,6 +7,8 @@ public:
     static CNodeOp* create(string& token);
     virtual int getExpectedChildrenCount() const;
     bool isChildFull() const;
+    
+
 };
 
 class CNodeOpAdd :
@@ -15,7 +17,7 @@ class CNodeOpAdd :
 public:
     double evaluate() const override;
     string nodeToStr() const override;
-
+    CNode* clone(CTree* newOwner) const override;
 };
 
 class CNodeOpSub :
@@ -24,6 +26,7 @@ class CNodeOpSub :
 public:
     double evaluate() const override;
     string nodeToStr() const override;
+    CNode* clone(CTree* newOwner) const override;
 };
 
 class CNodeOpMult :
@@ -32,6 +35,7 @@ class CNodeOpMult :
 public:
     double evaluate() const override;
     string nodeToStr() const override;
+    CNode* clone(CTree* newOwner) const override;
 };
 
 class CNodeOpDiv :
@@ -40,6 +44,7 @@ class CNodeOpDiv :
 public:
     double evaluate() const override;
     string nodeToStr() const override;
+    CNode* clone(CTree* newOwner) const override;
 };
 
 
@@ -50,6 +55,8 @@ public:
     double evaluate() const override;
     string nodeToStr() const override;
     int getExpectedChildrenCount() const override;
+    CNode* clone(CTree* newOwner) const override;
+    
 };
 
 class CNodeOpCos :
@@ -59,5 +66,6 @@ public:
     double evaluate() const override;
     string nodeToStr() const override;
     int getExpectedChildrenCount() const override;
+    CNode* clone(CTree* newOwner) const override;
 };
 

@@ -12,6 +12,10 @@ CNodeAbs::CNodeAbs(const string& token) {
 	}
 }
 
+CNodeAbs::CNodeAbs(double val) {
+	value = val;
+}
+
 string CNodeAbs::nodeToStr() const {
 	stringstream ss;
 	ss << value;
@@ -20,4 +24,8 @@ string CNodeAbs::nodeToStr() const {
 
 double CNodeAbs::evaluate() const {
 	return value;
+}
+
+CNode* CNodeAbs::clone(CTree* newOwner) const {
+	return new CNodeAbs(value);
 }

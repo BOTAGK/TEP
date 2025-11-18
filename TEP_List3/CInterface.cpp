@@ -37,18 +37,17 @@ void CInterface::run() {
 			tokens.push_back(token);
 		}
 
-		//wykonuje metode chyba ze bledna 
 		if (!inputMethod(command, tokens)) {
-			cout << "B³êdna metoda: " << command << "\n";
+			cout << "B³êdna metoda: " << command << "\n" << endl;
 		}
 	}
 
 	cout << "Koniec programu\n " << endl;
 }
 
+
 void CInterface::enter(const vector<string> tokens) {
 	
-
 	CError result = tree.create(tokens);
 	
 	cout << result.getMessage() << "\n" << endl;
@@ -71,7 +70,18 @@ void CInterface::comp(const vector<string> tokens) {
 }
 
 void CInterface::join(const vector<string> tokens) {
+	
+	CError result = tree.join(tokens);
 
+	cout << result.getMessage() << "\n" << endl;
+
+	if (result.lackArguments()) {
+		cout << "Join formula was to short. Fixed it" << "\n" << endl;
+	}
+
+	if (result.isSuccess()) {
+		cout << "Wynik laczenia: " + tree.treeToString() << "\n" << endl;
+	}
 }
 
 void CInterface::print() {
@@ -87,7 +97,7 @@ void CInterface::quit() {
 	cout << "Koniec programu" << endl;
 }
 
-bool CInterface::undesiredToken(const char& input) {
+bool CInterface::undesiredToken(const char& input) const {
 	bool is_allowed = (input >= 'a' && input <= 'z') ||
 				      (input >= 'A' && input <= 'Z') ||
 					  (input >= '0' && input <= '9') ||
@@ -96,7 +106,7 @@ bool CInterface::undesiredToken(const char& input) {
 	return !is_allowed;
 }
 
-void CInterface::fixInput(string& input) {
+void CInterface::fixInput(string& input) const {
 	int count = input.size();
 	int badChar = 0;
 

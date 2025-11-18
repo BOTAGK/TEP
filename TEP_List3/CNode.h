@@ -15,6 +15,7 @@ public:
 	virtual string nodeToStr() const = 0;
 	virtual double evaluate() const = 0;
 	virtual int getExpectedChildrenCount() const;
+	virtual CNode* clone(CTree* newOwner) const = 0;
 
 	bool isLeaf() const ;
 	CNode* getChild(int index) const;

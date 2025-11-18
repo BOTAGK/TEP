@@ -8,8 +8,10 @@ class CNodeAbs :
 {
 public:
     CNodeAbs(const string& token);
+    CNodeAbs(double val);
     double evaluate() const override;
     string nodeToStr() const override;
+    CNode* clone(CTree* newOwner) const override;
 
 private:
     double value;

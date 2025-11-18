@@ -80,30 +80,13 @@ void CNode::fixNodes() {
 		addChild(newChild);
 	}
 }
-//1. dokonczyc wczytanie stringa jako wartosci dla CNodeAbs +
-//2. isTypeOf dokonczyc +
-//3 
-///4. fixowanieDrzewa FillWithOnes(); +
-/// 5. dokonczenie calego enter aby wypisywalo poprawnie wsyzstkie stringi +
-/// 6. zrobic w interfejsie metode undesired ktora sprawdza czy dany token to nie porzadany znak i wyjebanie go z listy tokenow+
-/// 7. zrobic vars w interfejs ktory bedzie wypisywal zmiennie drzewa+
-/// 7.5 Zamienic double pointer na CError ampresant +
-/// 8. print TreeToString+
-/// 9. zrobic comp ktore przydziela wartosc CNodeVar z drzewa i robi evaluate drzewa . DODAC KOD ktory i tak evaluate jesli nie ma variabli
-/// 9.5 przy to many unique variables i tak wypisac drzewo
-/// 10. zrobic join czyli tworzy drugie drzewo i dokleja je do pierwszego ktoregos liscia
-/// 11. operator =
-/// 12. operator +
-/// 13. sprawdzenie dokladnie wszystkich constow oraz overridow
-/// 14. sprawdzenie czy dzieli przez zero i nie przyjmowanie takiej metody 
-/// 
+
 bool CNode::isTypeOfAbs(const string& token){
 	if (token.empty()) return false;
 
 	char* pEnd;
 	double val = strtod(token.c_str(), &pEnd);
 
-	//jesli wskazuje na null terminator to dobrze jesli nie to to nie jest liczba
 	return *pEnd == '\0';
 }
 bool CNode::isTypeOfVar(const string& token) {
@@ -113,7 +96,7 @@ bool CNode::isTypeOfVar(const string& token) {
 }
 bool CNode::isTypeOfOp(const string& token) {
 	const string supportedOps[] = { "+", "-", "*", "/", "sin", "cos" };
-	//liczba w bajtach calego przez liczba w bajtach jednego
+	
 	int numberOfOps = sizeof(supportedOps) / sizeof(supportedOps[0]);
 
 	for (int i = 0; i < numberOfOps; i++) {
