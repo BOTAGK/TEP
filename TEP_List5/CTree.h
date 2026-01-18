@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "CError.h"
+#include "CResult.h"
 #include <string>
 
 using namespace std;
@@ -11,21 +12,34 @@ class CNodeVar;
 class CTree
 {
 public:
+
+	static int iCopyCount;
+	static int iMoveCount;
+
 	CTree();
 	CTree(const CTree& other);
 	~CTree();
 
-	CError comp(const vector<string>& tokens);
+
+	static CResult<CTree*, CError> create(const vector<string>& tokens);
+
+	CResult<void, CError> comp(const vector<string>& tokens);
+	CResult<void, CError> join(const vector<string>& tokens);
+
 	string evaluate() const;
-	CError create(const vector<string>& tokens);
-	CError eLoad(const vector<string>& tokens);
+	
+	
 	int size();
-	CError join(const vector<string>& tokens);
+	
 	CNode* findLeaf(CNode* node) ;
 	int countLeafs();
 
 	CTree operator+(const CTree& pcNewVal) const;
-	void operator=(const CTree& pcNewVal);
+	CTree& operator=(const CTree& pcNewVal);
+	
+	CTree(CTree&& pcOther);
+	CTree& operator=(CTree&& pcOther);
+
 
 	string treeToString() const;
 	string printVariables();
@@ -36,8 +50,10 @@ public:
 	
 private:
 
-	void countLeafsRec(CNode* node, int& coun);
+	CResult<void, CError> eLoad(const vector<string>& tokens);
 	void fixTree();
+
+	void countLeafsRec(CNode* node, int& coun);
 	CNode* root;
 	vector<pair<string, CNodeVar*>> variable;
 	

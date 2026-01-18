@@ -1,0 +1,105 @@
+[RESULT] Operation Failed. Errors: 
+ - Error at token4: Unexpected end, expected more arguments
+------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token4: Unexpected end, expected more arguments
+------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token6: Unexpected end, expected more arguments
+------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token6: Unexpected end, expected more arguments
+------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token5: Unexpected end, expected more arguments
+------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token2: Unexpected end, expected more arguments
+------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token2: Unexpected end, expected more arguments
+------------------------------------
+[SUCCESS TREE SAVE] -------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token2: Unexpected end, expected more arguments
+------------------------------------
+[SUCCESS TREE SAVE] -------------------
+NULL
+---------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token2: Unexpected end, expected more arguments
+------------------------------------
+[SUCCESS TREE SAVE] -------------------
+NULL
+---------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token2: Unexpected end, expected more arguments
+------------------------------------
+[SUCCESS TREE SAVE] -------------------
+NULL
+---------------------------------------
+[RESULT] Operation Failed. Errors: 
+ - Error at token2: Unexpected end, expected more arguments
+------------------------------------
+[SUCCESS TREE SAVE] -------------------
+NULL
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 2
+---------------------------------------
+[RESULT] Operation Succesful
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
+- 2 2
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
+- 2 2
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
+- 2 2
+---------------------------------------
+[RESULT] Operation Succesful
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
++ 1 1
+---------------------------------------
+[RESULT] Operation Succesful
+[SUCCESS TREE SAVE] -------------------
+- 2 2
+---------------------------------------
+[RESULT] Operation Succesful

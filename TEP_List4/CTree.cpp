@@ -17,39 +17,73 @@ CTree::~CTree() {
 	delete root;
 }
 
-//-------------------Tworzenie drzewa ENTER --------------------------------------------------
-CError CTree::create(const vector<string>& tokens) {
-	//tworzy drzewo jesli wymaga fixowania to to robimy
-	CError error = eLoad(tokens);
+CTree::CTree(CTree&& pcOther) {
+	root = pcOther.root;
+	variable = move(pcOther.variable);
 
-	if (error.lackArguments()) {
-		fixTree();
+	pcOther.root = NULL;
+	pcOther.variable.clear();
+}
+
+CTree& CTree::operator=(CTree&& pcOther) {
+	if (this == &pcOther) {
+		return *this;
 	}
 
-	return error;
-}
-CError CTree::eLoad(const vector<string>& tokens) {
 	delete root;
-	root = NULL;
+	root = pcOther.root;
+	variable = move(pcOther.variable);
+
+	pcOther.root = NULL;
+	pcOther.variable.clear();
+
+	return *this;
+}
+
+//-------------------Tworzenie drzewa ENTER --------------------------------------------------
+CResult<CTree*, CError> CTree::create(const vector<string>& tokens) {
+	CTree* tree = new CTree();
+
+	CResult<void, CError> loadResult = tree->eLoad(tokens);
+
+	if (loadResult.bIsSuccess()) {
+		return CResult<CTree*, CError>::cOk(tree);
+	}
+	else {
+		delete tree;
+		return CResult<CTree*, CError>::cFail(loadResult.vExtractErrors());
+	}
+}
+CResult<void, CError> CTree::eLoad(const vector<string>& tokens) {
+	if (root != NULL) {
+		delete root;
+		root = NULL;
+	}
 	variable.clear();
 
 	if (tokens.empty()) {
-		return CError();
+		return CResult<void, CError>::cOk();
 	}
 
-	CError error;
 	int index = 0;
 
-	root = CNode::createNode(this, tokens, index, error);
+	CResult<CNode*, CError> result = CNode::createNode(this, tokens, index);
 
 
 	//jesli za duzo znakow sprawdzamy
-	if (error.isSuccess() && index < tokens.size()) {
-		return CError(index,false, "Error: TOO many unique variables");
+	if (!result.bIsSuccess()) {
+		return CResult<void, CError>::cFail(result.vExtractErrors());
 	}
 
-	//inaczej sukcess
-	return error;
+	CNode* newRoot = result.cGetValue();
+
+	if (index < tokens.size()) {
+		delete newRoot;
+		return CResult<void, CError>::cFail(new CError(index, "Error: Too many unique variables (extra tokens)"));
+	}
+
+	root = newRoot;
+	return CResult<void, CError>::cOk();
 }
 
 void CTree::fixTree() {
@@ -58,17 +92,20 @@ void CTree::fixTree() {
 		root->fixNodes();
 	}
 }
+
 //--------------------------------------COMP--------------------------------------------------
 //co jesli lisciem jest variabla i zastepujemy go musimy usunac ta variable z vector variable Tree 
 //dodanie liczby do CTree variable a nastepnie 
 
-CError CTree::comp(const vector<string>& tokens) {
-	if (tokens.size() != variable.size()) return CError(1, false, "Error: Wrong quantity of variables!");
+CResult<void, CError> CTree::comp(const vector<string>& tokens) {
+	if (tokens.size() != variable.size()) {
+		return CResult<void, CError>::cFail(new CError(1, "Error: Wrong quantity of variables!"));
+	}
 
 	//sprawdzic czy typu ABS
 	for (int i = 0; i < tokens.size(); i++) {
 		if (!CNode::isTypeOfAbs(tokens[i])) {
-			return CError(i, false, "Error: Variable isn't double");
+			return CResult<void, CError>::cFail(new CError(i, "Error: Variable isn't double"));
 		}
 	}
 
@@ -76,7 +113,7 @@ CError CTree::comp(const vector<string>& tokens) {
 		variable[i].second->setValue(tokens[i]);
 	}
 
-	return CError();
+	return CResult<void, CError>::cOk();
 }
 
 string CTree::evaluate() const {
@@ -89,46 +126,49 @@ string CTree::evaluate() const {
 }
 //----------------------------------------Join-------------------------------------------------
 
-CError CTree::join(const vector<string>& tokens) {
+CResult<void, CError> CTree::join(const vector<string>& tokens) {
 	if (root == NULL) {
-		return CError(-1, false, "Cannot join to an empty tree.");
+		return CResult<void, CError>::cFail(new CError(-1, "Cannot join to an empty tree."));
 	}
-	
-	CError error;
-	int index = 0;
-	CNode* newNode = CNode::createNode(this, tokens, index, error);
-	
-	if (error.lackArguments()) {
 
-		newNode->fixNodes();
+	int index = 0;
+
+	CResult<CNode*, CError> result = CNode::createNode(this, tokens, index);
+
+	if (!result.bIsSuccess()) {
+		return CResult<void, CError>::cFail(result.vExtractErrors());
 	}
-	else if (!error.isSuccess()) {
-		delete newNode;
-		return error;
-	}
+
+	CNode* newNode = result.cGetValue();
 
 	//znajdz lisc
 	CNode* leaf = findLeaf(root);
 	if (leaf == NULL) {
 		delete newNode;
-		return CError(-1, false, "Could not find a leaf in existing tree");
+		return CResult<void, CError>::cFail(new CError(-1, "Could not find a leaf in existing tree"));
 	}
+
+	for(int i = 0; i < variable.size(); i++){
+		if (variable[i].second == leaf) {
+			variable.erase(variable.begin() + i);
+		}
+	}
+
 
 	//zamien lisc na noda
 	CNode* parent = leaf->getParent();
 	if (parent != NULL) {
 		if (!parent->replaceChild(leaf, newNode)) {
 			delete newNode;
-			return CError(-1, false, "Failed to replace child in parent node.");
+			return CResult<void, CError>::cFail(new CError(-1, "Failed to replace child in parent node."));
 		}
 	}
 	else {
-		delete root;
 		root = newNode;
 	}
 
 	delete leaf;
-	return CError();
+	return CResult<void, CError>::cOk();
 }
 
 CNode* CTree::findLeaf(CNode* node) {
@@ -203,12 +243,17 @@ string CTree::printVariables() {
 }
 
 string CTree::treeToString() const {
-	return root->nodeToStr();
+	if (root != NULL) {
+		return root->nodeToStr();
+	}
+	else {
+		return "NULL";
+	}
 }
 
-void CTree::operator=(const CTree& other) {
+CTree& CTree::operator=(const CTree& other) {
 	if (this == &other) {
-		return;
+		return *this;
 	}
 
 	delete root;
@@ -218,6 +263,8 @@ void CTree::operator=(const CTree& other) {
 	if (other.root != NULL) {
 		root = other.root->clone(this);
 	}
+
+	return *this;
 }
 
 CTree CTree::operator+(const CTree& other) const {

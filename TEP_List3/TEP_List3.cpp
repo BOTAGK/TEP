@@ -3,12 +3,27 @@
 
 #include <iostream>
 #include "CInterface.h"
+#include "CTree.h"
 
 int main()
 {
-    CInterface inter;
+    /*CInterface inter;
 
-    inter.run();
+    inter.run();*/
+
+    /*CTree c1, c2, res;
+    c1.create({ "+", "1", "2" });
+   
+    c2.create({ "*", "3", "4" });
+    cout << c1.treeToString() << endl;
+    cout << c2.treeToString() << endl;
+    res = c1 + c2;
+    cout << res.treeToString() << endl;*/
+
+    CTree c1;
+    c1.create({ "+", "+", "+", "1", "1", "1", "1" });
+    cout << c1.treeToString() << "\n" << endl;
+    cout << c1.countLeafs() << endl;
 }
 
 //wektor na poziomie CNode (CNode -> (CNodeOP, CNodeVar, CNodeAbsolute) 

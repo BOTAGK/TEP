@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\List4">
+      <UniqueIdentifier>{5ee23d37-bb92-4c0e-9f57-d33081cba12b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\List4\List3">
+      <UniqueIdentifier>{059490cc-9d7e-4295-954b-8cc6378ac521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\List4">
+      <UniqueIdentifier>{8b33eedd-6de6-4b7f-9f61-cc72650b7197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\List4\List3">
+      <UniqueIdentifier>{5371635c-a4c6-46ae-a79f-e5402bc37464}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TEP_List5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CRefCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CError.cpp">
+      <Filter>Source Files\List4</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterface.cpp">
+      <Filter>Source Files\List4\List3</Filter>
+    </ClCompile>
+    <ClCompile Include="CLogger.cpp">
+      <Filter>Source Files\List4</Filter>
+    </ClCompile>
+    <ClCompile Include="CNode.cpp">
+      <Filter>Source Files\List4\List3</Filter>
+    </ClCompile>
+    <ClCompile Include="CNodeAbs.cpp">
+      <Filter>Source Files\List4\List3</Filter>
+    </ClCompile>
+    <ClCompile Include="CNodeOp.cpp">
+      <Filter>Source Files\List4\List3</Filter>
+    </ClCompile>
+    <ClCompile Include="CNodeVar.cpp">
+      <Filter>Source Files\List4\List3</Filter>
+    </ClCompile>
+    <ClCompile Include="CTree.cpp">
+      <Filter>Source Files\List4\List3</Filter>
+    </ClCompile>
+    <ClCompile Include="TestObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CMySmartPointer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CRefCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CError.h">
+      <Filter>Header Files\List4</Filter>
+    </ClInclude>
+    <ClInclude Include="CInterface.h">
+      <Filter>Header Files\List4\List3</Filter>
+    </ClInclude>
+    <ClInclude Include="CLogger.h">
+      <Filter>Header Files\List4</Filter>
+    </ClInclude>
+    <ClInclude Include="CNode.h">
+      <Filter>Header Files\List4\List3</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeAbs.h">
+      <Filter>Header Files\List4\List3</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeOp.h">
+      <Filter>Header Files\List4\List3</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeVar.h">
+      <Filter>Header Files\List4\List3</Filter>
+    </ClInclude>
+    <ClInclude Include="CResult.h">
+      <Filter>Header Files\List4</Filter>
+    </ClInclude>
+    <ClInclude Include="CTree.h">
+      <Filter>Header Files\List4\List3</Filter>
+    </ClInclude>
+    <ClInclude Include="TestObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
